@@ -1,0 +1,36 @@
+{
+    "name": "jsw/commonmark-figure-extension",
+    "type": "commonmark-extension",
+    "authors": [
+        {
+            "name": "Jan Stanley Watt",
+            "email": "github@mail.whojinn.com"
+        }
+    ],
+    "keywords": [
+        "markdown",
+        "extension",
+        "md",
+        "commonmark"
+    ],
+    "description": "League/commonmark extension for HTML figure and caption.",
+    "license": "Apache-2.0",
+    "require-dev": {
+        "league/commonmark": "^2.3",
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "JSW\\Figure\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JSW\\Test\\": "test/"
+        }
+    },
+    "suggest": {
+        "jsw/commonmark-danraku-extension": "League/commonmark extension for japanese danraku style."
+    }
+}

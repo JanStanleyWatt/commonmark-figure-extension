@@ -1,0 +1,11 @@
+vendor/
+test.*
+test/.phpunit.result.cache
+.php-cs-fixer.cache
+.php-cs-fixer.dist.php
+phpunit.xml
+.vscode
+.phpunit.cache
+tmp
+composer.lock
+debug.php
