@@ -21,7 +21,7 @@ namespace JSW\Figure;
 
 use JSW\Figure\Node\Figure;
 use JSW\Figure\Node\FigureCaption;
-use JSW\Figure\Parser\Block\FigureBlockParser;
+use JSW\Figure\Parser\Block\FigureParser;
 use JSW\Figure\Renderer\FigureCaptionRenderer;
 use JSW\Figure\Renderer\FigureRenderer;
 use League\CommonMark\Environment\EnvironmentBuilderInterface;
@@ -31,7 +31,7 @@ final class FigureExtension implements ExtensionInterface
 {
     public function register(EnvironmentBuilderInterface $environment): void
     {
-        $environment->addBlockStartParser(FigureBlockParser::createBlockStartParser())
+        $environment->addBlockStartParser(FigureParser::createBlockStartParser())
                     ->addRenderer(Figure::class, new FigureRenderer())
                     ->addRenderer(FigureCaption::class, new FigureCaptionRenderer());
     }

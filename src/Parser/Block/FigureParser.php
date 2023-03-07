@@ -32,7 +32,7 @@ use League\CommonMark\Parser\Cursor;
 use League\CommonMark\Parser\InlineParserEngineInterface;
 use League\CommonMark\Parser\MarkdownParserStateInterface;
 
-final class FigureBlockParser extends AbstractBlockContinueParser implements BlockContinueParserWithInlinesInterface
+final class FigureParser extends AbstractBlockContinueParser implements BlockContinueParserWithInlinesInterface
 {
     private Figure $block;
 
@@ -63,7 +63,7 @@ final class FigureBlockParser extends AbstractBlockContinueParser implements Blo
                     return BlockStart::none();
                 }
 
-                return BlockStart::of(new FigureBlockParser())->at($cursor);
+                return BlockStart::of(new FigureParser())->at($cursor);
             }
         };
     }
