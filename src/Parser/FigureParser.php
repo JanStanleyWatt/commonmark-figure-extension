@@ -17,7 +17,7 @@ declare(strict_types=1);
  * limitations under the License.
  */
 
-namespace JSW\Figure\Parser\Block;
+namespace JSW\Figure\Parser;
 
 use JSW\Figure\Node\Figure;
 use JSW\Figure\Node\FigureCaption;

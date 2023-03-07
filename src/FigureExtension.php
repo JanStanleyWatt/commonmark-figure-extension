@@ -21,7 +21,7 @@ namespace JSW\Figure;
 
 use JSW\Figure\Node\Figure;
 use JSW\Figure\Node\FigureCaption;
-use JSW\Figure\Parser\Block\FigureParser;
+use JSW\Figure\Parser\FigureParser;
 use JSW\Figure\Renderer\FigureCaptionRenderer;
 use JSW\Figure\Renderer\FigureRenderer;
 use League\CommonMark\Environment\EnvironmentBuilderInterface;
