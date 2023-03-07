@@ -33,9 +33,9 @@ $environment->addExtension(new CommonMarkCoreExtension())
 $converter = new MarkdownConverter($environment);
 
 $markdown = <<<EOL
-^^^
+:::
 これが図
-^^^これはキャプション
+:::これはキャプション
 EOL;
 
 echo $converter->convert($markdown);

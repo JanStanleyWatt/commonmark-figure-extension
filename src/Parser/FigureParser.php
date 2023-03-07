@@ -55,11 +55,11 @@ final class FigureParser extends AbstractBlockContinueParser implements BlockCon
         return new class() implements BlockStartParserInterface {
             public function tryStart(Cursor $cursor, MarkdownParserStateInterface $parserState): ?BlockStart
             {
-                if ('^' !== $cursor->getNextNonSpaceCharacter()) {
+                if (':' !== $cursor->getNextNonSpaceCharacter()) {
                     return BlockStart::none();
                 }
 
-                if (null === $cursor->match('/^[\s\t]*\^{3,}$/u')) {
+                if (null === $cursor->match('/^[\s\t]*:{3,}$/u')) {
                     return BlockStart::none();
                 }
 
@@ -72,8 +72,8 @@ final class FigureParser extends AbstractBlockContinueParser implements BlockCon
     {
         $cursor->advanceToNextNonSpaceOrTab();
 
-        if ('^' === $cursor->getCurrentCharacter()) {
-            if (null !== $cursor->match('/^\^{3,}/u') && !$cursor->isAtEnd()) {
+        if (':' === $cursor->getCurrentCharacter()) {
+            if (null !== $cursor->match('/^:{3,}/u') && !$cursor->isAtEnd()) {
                 $this->caption = $cursor->getRemainder();
             }
 
