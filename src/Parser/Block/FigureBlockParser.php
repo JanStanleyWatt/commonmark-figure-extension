@@ -59,8 +59,7 @@ final class FigureBlockParser extends AbstractBlockContinueParser implements Blo
                     return BlockStart::none();
                 }
 
-                $match = $cursor->match('/^[\s\t]*\^{3,}$/u');
-                if (null === $match) {
+                if (null === $cursor->match('/^[\s\t]*\^{3,}$/u')) {
                     return BlockStart::none();
                 }
 
@@ -74,9 +73,7 @@ final class FigureBlockParser extends AbstractBlockContinueParser implements Blo
         $cursor->advanceToNextNonSpaceOrTab();
 
         if ('^' === $cursor->getCurrentCharacter()) {
-            $match = $cursor->match('/^[\s\t]*\^{3,}/u');
-
-            if (null !== $match && !$cursor->isAtEnd()) {
+            if (null !== $cursor->match('/^\^{3,}/u') && !$cursor->isAtEnd()) {
                 $this->caption = $cursor->getRemainder();
             }
 
@@ -92,9 +89,8 @@ final class FigureBlockParser extends AbstractBlockContinueParser implements Blo
             $inlineParser->parse($string, $this->block);
         }
         if ('' !== $this->caption) {
-            $capnode = new FigureCaption;
-            $this->block->appendChild($capnode);
-            $inlineParser->parse($this->caption,$this->block->lastChild());
+            $this->block->appendChild(new FigureCaption());
+            $inlineParser->parse($this->caption, $this->block->lastChild());
         }
     }
 
