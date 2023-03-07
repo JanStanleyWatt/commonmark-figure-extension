@@ -7,6 +7,10 @@
             "email": "github@mail.whojinn.com"
         }
     ],
+    "support": {
+        "issues": "https://github.com/JanStanleyWatt/commonmark-figure-extension/issues",
+        "email": "github@mail.whojinn.com"
+    },
     "keywords": [
         "markdown",
         "extension",
@@ -31,6 +35,12 @@
         }
     },
     "suggest": {
-        "jsw/commonmark-danraku-extension": "League/commonmark extension for japanese danraku style."
+
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests"
+    },
+    "scripts-descriptions": {
+        "test": "Run all tests"
     }
 }
