@@ -17,7 +17,7 @@ declare(strict_types=1);
  * limitations under the License.
  */
 
-namespace JSW\Figure\Parser\Block;
+namespace JSW\Figure\Parser;
 
 use JSW\Figure\Node\Figure;
 use JSW\Figure\Node\FigureCaption;
@@ -32,7 +32,7 @@ use League\CommonMark\Parser\Cursor;
 use League\CommonMark\Parser\InlineParserEngineInterface;
 use League\CommonMark\Parser\MarkdownParserStateInterface;
 
-final class FigureBlockParser extends AbstractBlockContinueParser implements BlockContinueParserWithInlinesInterface
+final class FigureParser extends AbstractBlockContinueParser implements BlockContinueParserWithInlinesInterface
 {
     private Figure $block;
 
@@ -59,12 +59,11 @@ final class FigureBlockParser extends AbstractBlockContinueParser implements Blo
                     return BlockStart::none();
                 }
 
-                $match = $cursor->match('/^[ \t]*\^{3,}$/u');
-                if (null === $match) {
+                if (null === $cursor->match('/^[\s\t]*\^{3,}$/u')) {
                     return BlockStart::none();
                 }
 
-                return BlockStart::of(new FigureBlockParser())->at($cursor);
+                return BlockStart::of(new FigureParser())->at($cursor);
             }
         };
     }
@@ -74,9 +73,7 @@ final class FigureBlockParser extends AbstractBlockContinueParser implements Blo
         $cursor->advanceToNextNonSpaceOrTab();
 
         if ('^' === $cursor->getCurrentCharacter()) {
-            $match = $cursor->match('/^[ \t]*\^{3,}/u');
-
-            if (null !== $match && !$cursor->isAtEnd()) {
+            if (null !== $cursor->match('/^\^{3,}/u') && !$cursor->isAtEnd()) {
                 $this->caption = $cursor->getRemainder();
             }
 
@@ -92,9 +89,8 @@ final class FigureBlockParser extends AbstractBlockContinueParser implements Blo
             $inlineParser->parse($string, $this->block);
         }
         if ('' !== $this->caption) {
-            $capnode = new FigureCaption;
-            $this->block->appendChild($capnode);
-            $inlineParser->parse($this->caption,$this->block->lastChild());
+            $this->block->appendChild(new FigureCaption());
+            $inlineParser->parse($this->caption, $this->block->lastChild());
         }
     }
 
