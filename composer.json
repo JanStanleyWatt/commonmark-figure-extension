@@ -19,6 +19,7 @@
     ],
     "description": "League/commonmark extension for HTML figure and caption.",
     "license": "Apache-2.0",
+    "readme": "README.md",
     "require-dev": {
         "league/commonmark": "^2.3",
         "phpunit/phpunit": "^9.5",
