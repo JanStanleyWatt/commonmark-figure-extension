@@ -34,7 +34,7 @@ final class FigureTest extends TestCase
 
         $converter = new MarkdownConverter($environment);
 
-        $expect = "<figure>Figure</figure>\n";
+        $expect = "<figure><p>Figure</p></figure>\n";
         $actual_md = <<<EOL
         ^^^
         Figure
@@ -54,7 +54,7 @@ final class FigureTest extends TestCase
 
         $converter = new MarkdownConverter($environment);
 
-        $expect = "<figure>Figure\n<figcaption>Caption</figcaption></figure>\n";
+        $expect = $expect = "<figure><p>Figure</p>\n<figcaption>Caption</figcaption></figure>\n";
         $actual_md = <<<EOL
         ^^^
         Figure
@@ -74,7 +74,7 @@ final class FigureTest extends TestCase
 
         $converter = new MarkdownConverter($environment);
 
-        $expect = "<figure>Figure</figure>\n";
+        $expect = "<figure><p>Figure</p></figure>\n";
         $actual_md = <<<EOL
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         Figure
@@ -94,7 +94,7 @@ final class FigureTest extends TestCase
 
         $converter = new MarkdownConverter($environment);
 
-        $expect = "<figure>Figure\n<figcaption>Caption</figcaption></figure>\n";
+        $expect = $expect = "<figure><p>Figure</p>\n<figcaption>Caption</figcaption></figure>\n";
         $actual_md = <<<EOL
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         Figure
@@ -114,7 +114,7 @@ final class FigureTest extends TestCase
 
         $converter = new MarkdownConverter($environment);
 
-        $expect_1 = "<figure>Figure</figure>\n";
+        $expect_1 = "<figure><p>Figure</p></figure>\n";
         $actual_md_1 = <<<EOL
         ^^^^^
         Figure
@@ -122,7 +122,7 @@ final class FigureTest extends TestCase
         EOL;
         $actual_1 = $converter->convert($actual_md_1)->getContent();
 
-        $expect_2 = "<figure>Figure</figure>\n";
+        $expect_2 = "<figure><p>Figure</p></figure>\n";
         $actual_md_2 = <<<EOL
         ^^^
         Figure
@@ -130,8 +130,8 @@ final class FigureTest extends TestCase
         EOL;
         $actual_2 = $converter->convert($actual_md_2)->getContent();
 
-        $this->assertSame($expect_1, $actual_1,'Case with more upper is failed');
-        $this->assertSame($expect_2, $actual_2,'Case with more lower is failed');
+        $this->assertSame($expect_1, $actual_1, 'Case with more upper is failed');
+        $this->assertSame($expect_2, $actual_2, 'Case with more lower is failed');
     }
 
     public function testDifferentNumberOfSymbolsWithFigureCaption()
@@ -143,7 +143,7 @@ final class FigureTest extends TestCase
 
         $converter = new MarkdownConverter($environment);
 
-        $expect_1 = "<figure>Figure\n<figcaption>Caption</figcaption></figure>\n";
+        $expect_1 = $expect = "<figure><p>Figure</p>\n<figcaption>Caption</figcaption></figure>\n";
         $actual_md_1 = <<<EOL
         ^^^^^
         Figure
@@ -151,7 +151,7 @@ final class FigureTest extends TestCase
         EOL;
         $actual_1 = $converter->convert($actual_md_1)->getContent();
 
-        $expect_2 = "<figure>Figure\n<figcaption>Caption</figcaption></figure>\n";
+        $expect_2 = $expect = "<figure><p>Figure</p>\n<figcaption>Caption</figcaption></figure>\n";
         $actual_md_2 = <<<EOL
         ^^^^^
         Figure
@@ -159,7 +159,7 @@ final class FigureTest extends TestCase
         EOL;
         $actual_2 = $converter->convert($actual_md_2)->getContent();
 
-        $this->assertSame($expect_1, $actual_1,'Case with more upper is failed');
-        $this->assertSame($expect_2, $actual_2,'Case with more lower is failed');
+        $this->assertSame($expect_1, $actual_1, 'Case with more upper is failed');
+        $this->assertSame($expect_2, $actual_2, 'Case with more lower is failed');
     }
 }

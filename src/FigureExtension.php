@@ -31,8 +31,8 @@ final class FigureExtension implements ExtensionInterface
 {
     public function register(EnvironmentBuilderInterface $environment): void
     {
-        $environment->addBlockStartParser(FigureParser::createBlockStartParser())
-                    ->addRenderer(Figure::class, new FigureRenderer())
+        $environment->addBlockStartParser(FigureParser::createBlockStartParser());
+        $environment->addRenderer(Figure::class, new FigureRenderer())
                     ->addRenderer(FigureCaption::class, new FigureCaptionRenderer());
     }
 }

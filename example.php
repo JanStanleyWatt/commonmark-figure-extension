@@ -25,7 +25,13 @@ use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 
-$environment = new Environment();
+$config = [
+    'figure' => [
+        'contain_block' => true
+    ]
+];
+
+$environment = new Environment($config);
 
 $environment->addExtension(new CommonMarkCoreExtension())
             ->addExtension(new FigureExtension());
