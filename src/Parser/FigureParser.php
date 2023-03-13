@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Copyright 2023 Jan Stanley Watt
+ * Copyright 2023 Jan Stanley Watt.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,18 +35,11 @@ use League\CommonMark\Parser\MarkdownParserStateInterface;
 final class FigureParser extends AbstractBlockContinueParser implements BlockContinueParserWithInlinesInterface
 {
     private Figure $block;
-
-    /**
-     * @var string[] strings
-     */
-    private array $strings;
-
     private string $caption;
 
     public function __construct()
     {
         $this->block = new Figure();
-        $this->strings = [];
         $this->caption = '';
     }
 
@@ -85,22 +78,10 @@ final class FigureParser extends AbstractBlockContinueParser implements BlockCon
 
     public function parseInlines(InlineParserEngineInterface $inlineParser): void
     {
-        foreach ($this->strings as $string) {
-            $inlineParser->parse($string, $this->block);
-        }
         if ('' !== $this->caption) {
             $this->block->appendChild(new FigureCaption());
             $inlineParser->parse($this->caption, $this->block->lastChild());
         }
-    }
-
-    public function closeBlock(): void
-    {
-    }
-
-    public function addLine(string $line): void
-    {
-        $this->strings[] = $line;
     }
 
     public function getBlock(): AbstractBlock
@@ -119,11 +100,6 @@ final class FigureParser extends AbstractBlockContinueParser implements BlockCon
             return false;
         }
 
-        return true;
-    }
-
-    public function canHaveLazyContinuationLines(): bool
-    {
         return true;
     }
 }
