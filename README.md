@@ -8,6 +8,11 @@ $ composer require jsw/commonmark-figure-extension
 ```
 
 ## Usage
+
+- Fence the top and bottom of the sentence you want to be a figure with `^` like a code block
+- Continued text in bottom fence becomes figure caption
+- Even if the number of upper and lower `^` is different, it will be processed normally
+
 ```php
 $environment = new Environment();
 $environment->addExtension(new CommonMarkCoreExtension());
@@ -21,7 +26,7 @@ $markdown =<<<EOL
 ^^^ This is caption for image
 EOL;
 
-// <figure><img src="https://example.com/image.jpg" alt="example-image">
+// <figure><p><img src="https://example.com/image.jpg" alt="example-image" /></p>
 // <figcaption>This is caption for image</figcaption></figure>
 echo $converter->convert($markdown);
 ```
