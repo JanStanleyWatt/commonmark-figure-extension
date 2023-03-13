@@ -25,13 +25,7 @@ use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 
-$config = [
-    'figure' => [
-        'contain_block' => true
-    ]
-];
-
-$environment = new Environment($config);
+$environment = new Environment();
 
 $environment->addExtension(new CommonMarkCoreExtension())
             ->addExtension(new FigureExtension());
@@ -40,8 +34,10 @@ $converter = new MarkdownConverter($environment);
 
 $markdown = <<<EOL
 ^^^
-これが図
-^^^これはキャプション
+![example-image](https://example.com/image.jpg)
+^^^ This is caption for image
 EOL;
 
+// <figure><p><img src="https://example.com/image.jpg" alt="example-image" /></p>
+// <figcaption>This is caption for image</figcaption></figure>
 echo $converter->convert($markdown);
