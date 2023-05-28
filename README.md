@@ -16,7 +16,7 @@ $ composer require jsw/commonmark-figure-extension
 ```php
 $environment = new Environment();
 $environment->addExtension(new CommonMarkCoreExtension());
-            ->addExtension(new FitureExtension());
+            ->addExtension(new FigureExtension());
 
 $converter = new MarkdownConverter($environment);
 
