@@ -63,9 +63,9 @@ final class FigureParser extends AbstractBlockContinueParser implements BlockCon
 
     public function tryContinue(Cursor $cursor, BlockContinueParserInterface $activeBlockParser): ?BlockContinue
     {
-        $cursor->advanceToNextNonSpaceOrTab();
+        if ('^' === $cursor->getNextNonSpaceCharacter()) {
+            $cursor->advanceToNextNonSpaceOrTab();
 
-        if ('^' === $cursor->getCurrentCharacter()) {
             if (null !== $cursor->match('/^\^{3,}/u') && !$cursor->isAtEnd()) {
                 $this->caption = $cursor->getRemainder();
             }
