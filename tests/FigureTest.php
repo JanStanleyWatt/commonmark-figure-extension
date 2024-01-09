@@ -187,6 +187,7 @@ final class FigureTest extends TestCase
             doSomething();
         }
         ```
+        ^^^
         EOL;
         $actual = $converter->convert($actual_md)->getContent();
 
