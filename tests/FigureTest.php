@@ -176,6 +176,7 @@ final class FigureTest extends TestCase
         <figure><pre><code>if (condition) {
             doSomething();
         }
+        //     comment with whitespace
         </code></pre></figure>
 
         EOL;
@@ -186,6 +187,7 @@ final class FigureTest extends TestCase
         if (condition) {
             doSomething();
         }
+        //     comment with whitespace
         ```
         ^^^
         EOL;
