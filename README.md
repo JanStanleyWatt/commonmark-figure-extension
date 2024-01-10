@@ -1,6 +1,6 @@
 # Commonmark Figure Extension
 
-[League\CommonMark](https://github.com/thephpleague/commonmark)extension for HTML diagrams and captions inspired by [Markdig](https://github.com/xoofx/markdig).
+[League\CommonMark](https://github.com/thephpleague/commonmark) extension for HTML diagrams and captions inspired by [Markdig](https://github.com/xoofx/markdig).
 
 ## Installation
 ```Console
