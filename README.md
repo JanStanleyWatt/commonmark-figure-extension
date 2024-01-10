@@ -1,6 +1,6 @@
 # Commonmark Figure Extension
 
-[League\CommonMark](https://github.com/thephpleague/commonmark)extension for HTML diagrams and captions inspired by [Markdig](https://github.com/xoofx/markdig).
+[League\CommonMark](https://github.com/thephpleague/commonmark) extension for HTML diagrams and captions inspired by [Markdig](https://github.com/xoofx/markdig).
 
 ## Installation
 ```Console
@@ -30,6 +30,15 @@ EOL;
 // <figcaption>This is caption for image</figcaption></figure>
 echo $converter->convert($markdown);
 ```
+
+## Contribution
+1. Fork it (https://github.com/JanStanleyWatt/commonmark-figure-extension)
+1. Create your feature branch (`git checkout -b my-new-feature`)
+1. Commit your changes (`git commit -am 'Add some feature'`)
+1. Rebase your local changes against the master branch (if necessary)
+1. Run test suite with the `composer test` command and confirm that it passe
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create new Pull Request
 
 ## License
 Apache-v2
