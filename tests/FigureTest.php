@@ -162,4 +162,41 @@ final class FigureTest extends TestCase
         $this->assertSame($expect_1, $actual_1, 'Case with more upper is failed');
         $this->assertSame($expect_2, $actual_2, 'Case with more lower is failed');
     }
+
+    public function testFigureWithCodeBlockRetainsIndent()
+    {
+        $environment = new Environment();
+
+        $environment->addExtension(new CommonMarkCoreExtension())
+            ->addExtension(new FigureExtension());
+
+        $converter = new MarkdownConverter($environment);
+
+        $expect = <<<EOL
+        <figure><pre><code>if (condition) {
+            doSomething();
+        }
+            // comment behind whitespace
+        //     comment with whitespace
+        // comment with trailing whitespace    
+        </code></pre></figure>
+
+        EOL;
+
+        $actual_md = <<<EOL
+        ^^^
+        ```
+        if (condition) {
+            doSomething();
+        }
+            // comment behind whitespace
+        //     comment with whitespace
+        // comment with trailing whitespace    
+        ```
+        ^^^
+        EOL;
+        $actual = $converter->convert($actual_md)->getContent();
+
+        $this->assertSame($expect, $actual);
+    }
 }
